@@ -698,7 +698,7 @@ class UnitDecoderApp {
             // Get the current unit ID from the selected unit
             const currentUnitName = document.getElementById('selected-unit-name').textContent;
             const currentUnitCategory = document.getElementById('selected-unit-category').textContent;
-            
+        
             // Find current unit ID by searching for it
             const currentUnitResponse = await fetch(`/api/search?q=${encodeURIComponent(currentUnitName)}`);
             const currentUnits = await currentUnitResponse.json();
