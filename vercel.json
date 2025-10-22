@@ -2,16 +2,6 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".",
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "env": {
     "NODE_ENV": "production",
     "DB_PATH": "/tmp/unit_decoder.db"
