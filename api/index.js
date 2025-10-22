@@ -121,6 +121,3 @@ process.on('SIGINT', () => {
 
 // Export for Vercel serverless function
 module.exports = app;
-
-// Vercel handler
-module.exports.handler = app;

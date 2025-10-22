@@ -30,8 +30,8 @@ const fallbackUnits = [
     id: 3,
     name: 'Tola',
     category: 'Mass',
-    base_unit: 'gram',
-    conversion_factor: 11.6638038,
+    base_unit: 'kilogram',
+    conversion_factor: 0.0116638038,
     description: 'Traditional unit of mass used in South Asia, particularly in India and Pakistan',
     region: 'South Asia',
     era: 'Traditional',
@@ -48,6 +48,30 @@ const fallbackUnits = [
     region: 'United States',
     era: 'Imperial',
     source_url: 'https://en.wikipedia.org/wiki/Foot_(unit)',
+    status: 'verified'
+  },
+  {
+    id: 5,
+    name: 'Meter',
+    category: 'Length',
+    base_unit: 'meter',
+    conversion_factor: 1.0,
+    description: 'The base unit of length in the International System of Units (SI)',
+    region: 'International',
+    era: 'Modern',
+    source_url: 'https://en.wikipedia.org/wiki/Metre',
+    status: 'verified'
+  },
+  {
+    id: 6,
+    name: 'Inch',
+    category: 'Length',
+    base_unit: 'meter',
+    conversion_factor: 0.0254,
+    description: 'Imperial unit of length equal to 1/12 of a foot',
+    region: 'United States',
+    era: 'Imperial',
+    source_url: 'https://en.wikipedia.org/wiki/Inch',
     status: 'verified'
   }
 ];

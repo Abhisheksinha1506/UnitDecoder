@@ -50,10 +50,38 @@ const fallbackUnits = [
     era: 'Imperial',
     source_url: 'https://en.wikipedia.org/wiki/Foot_(unit)',
     status: 'verified'
+  },
+  {
+    id: 5,
+    name: 'Meter',
+    category: 'Length',
+    base_unit: 'meter',
+    conversion_factor: 1.0,
+    description: 'The base unit of length in the International System of Units (SI)',
+    region: 'International',
+    era: 'Modern',
+    source_url: 'https://en.wikipedia.org/wiki/Metre',
+    status: 'verified'
+  },
+  {
+    id: 6,
+    name: 'Inch',
+    category: 'Length',
+    base_unit: 'meter',
+    conversion_factor: 0.0254,
+    description: 'Imperial unit of length equal to 1/12 of a foot',
+    region: 'United States',
+    era: 'Imperial',
+    source_url: 'https://en.wikipedia.org/wiki/Inch',
+    status: 'verified'
   }
 ];
 
 function searchFallbackData(query) {
+  if (!query || query.trim().length === 0) {
+    return fallbackUnits;
+  }
+  
   const normalizedQuery = normalizeString(query).toLowerCase();
   return fallbackUnits.filter(unit => 
     unit.name.toLowerCase().includes(normalizedQuery) ||
@@ -81,41 +109,53 @@ module.exports = async (req, res) => {
   try {
     const query = req.query.q;
     
-    if (!query || query.trim().length === 0) {
-      return res.json([]);
-    }
-    
     // Try to use database first, fallback to static data
     try {
       const dbPath = process.env.DB_PATH || '/tmp/unit_decoder.db';
       const db = new Database(dbPath);
       
-      const normalizedQuery = normalizeString(query.trim());
-      
-      const results = db.prepare(`
-        SELECT * FROM units 
-        WHERE (name LIKE ? OR description LIKE ?) AND status = 'verified'
-        ORDER BY LENGTH(name) ASC
-        LIMIT 20
-      `).all(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
-      
-      db.close();
-      
-      if (results && results.length > 0) {
-        return res.json(results);
+      if (query && query.trim().length > 0) {
+        const normalizedQuery = normalizeString(query.trim());
+        
+        const results = db.prepare(`
+          SELECT * FROM units 
+          WHERE (name LIKE ? OR description LIKE ?) AND status = 'verified'
+          ORDER BY LENGTH(name) ASC
+          LIMIT 20
+        `).all(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
+        
+        db.close();
+        
+        if (results && results.length > 0) {
+          return res.json(results);
+        }
+      } else {
+        // Return all units when no query
+        const results = db.prepare(`
+          SELECT * FROM units 
+          WHERE status = 'verified'
+          ORDER BY name ASC
+          LIMIT 50
+        `).all();
+        
+        db.close();
+        
+        if (results && results.length > 0) {
+          return res.json(results);
+        }
       }
     } catch (dbError) {
-      console.log('Database not available, using fallback data');
+      console.log('Database not available, using fallback data:', dbError.message);
     }
     
     // Use fallback data
-    const results = searchFallbackData(query.trim());
+    const results = searchFallbackData(query);
     res.json(results);
     
   } catch (error) {
     console.error('Search error:', error);
     // Return fallback data even on error
-    const results = searchFallbackData(query.trim());
+    const results = searchFallbackData(req.query.q);
     res.json(results);
   }
 };
