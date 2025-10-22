@@ -1,4 +1,4 @@
-const db = require('../../db/database');
+const Database = require('better-sqlite3');
 
 module.exports = async (req, res) => {
   // Set CORS headers
@@ -25,7 +25,13 @@ module.exports = async (req, res) => {
       });
     }
     
-    const unit = db.findUnitById(parseInt(id));
+    // Initialize database connection for serverless environment
+    const dbPath = process.env.DB_PATH || '/tmp/unit_decoder.db';
+    const db = new Database(dbPath);
+    
+    const unit = db.prepare('SELECT * FROM units WHERE id = ? AND status = ?').get(parseInt(id), 'verified');
+    
+    db.close();
     
     if (!unit) {
       return res.status(404).json({

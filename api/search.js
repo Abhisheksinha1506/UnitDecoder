@@ -1,4 +1,5 @@
-const { searchUnits } = require('../utils/search');
+const Database = require('better-sqlite3');
+const { normalizeString, generatePhoneticKey } = require('../utils/normalize');
 
 module.exports = async (req, res) => {
   // Set CORS headers
@@ -22,7 +23,23 @@ module.exports = async (req, res) => {
       return res.json([]);
     }
     
-    const results = searchUnits(query.trim());
+    // Initialize database connection for serverless environment
+    const dbPath = process.env.DB_PATH || '/tmp/unit_decoder.db';
+    const db = new Database(dbPath);
+    
+    const normalizedQuery = normalizeString(query.trim());
+    const phoneticKey = generatePhoneticKey(query.trim());
+    
+    // Simple search query that works with the basic database
+    const results = db.prepare(`
+      SELECT * FROM units 
+      WHERE (name LIKE ? OR description LIKE ?) AND status = 'verified'
+      ORDER BY LENGTH(name) ASC
+      LIMIT 20
+    `).all(`%${normalizedQuery}%`, `%${normalizedQuery}%`);
+    
+    db.close();
+    
     res.json(results);
   } catch (error) {
     console.error('Search error:', error);
