@@ -19,7 +19,8 @@
     "test:everything": "node scripts/test-everything.js",
     "perf": "node scripts/performance-test.js",
     "monitor": "node scripts/performance-monitor.js",
-    "setup-perf": "node scripts/setup-performance.js"
+    "setup-perf": "node scripts/setup-performance.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^1.6.2",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "cross-env": "^10.1.0",
+    "husky": "^8.0.3",
     "jest": "^30.2.0",
     "nodemon": "^3.0.2",
     "supertest": "^7.1.4"

@@ -31,12 +31,20 @@ try {
   db.pragma('cache_size = 1000');
   db.pragma('temp_store = MEMORY');
   
-  // Read and execute schema
+  // Read and execute schema (with error handling for existing tables)
   const schemaPath = path.join(__dirname, '..', 'db', 'schema.sql');
   const schema = fs.readFileSync(schemaPath, 'utf8');
-  db.exec(schema);
   
-  console.log('✅ Database schema created');
+  try {
+    db.exec(schema);
+    console.log('✅ Database schema created');
+  } catch (error) {
+    if (error.message.includes('already exists')) {
+      console.log('✅ Database schema already exists');
+    } else {
+      throw error;
+    }
+  }
   
   // Check if we need to seed data
   const unitCount = db.prepare('SELECT COUNT(*) as count FROM units').get();
