@@ -20,7 +20,7 @@
     "perf": "node scripts/performance-test.js",
     "monitor": "node scripts/performance-monitor.js",
     "setup-perf": "node scripts/setup-performance.js",
-    "prepare": "husky install"
+    "prepare": "if [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi"
   },
   "dependencies": {
     "axios": "^1.6.2",
