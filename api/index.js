@@ -13,6 +13,11 @@ const convertRoutes = require('../routes/convert');
 
 const app = express();
 
+// Debug logging
+console.log('🚀 API handler initialized');
+console.log('📁 Public directory:', path.join(__dirname, '..', 'public'));
+console.log('🌍 Environment:', process.env.NODE_ENV);
+
 // Trust proxy for correct IP detection (important for Vercel)
 app.set('trust proxy', true);
 
@@ -70,4 +75,5 @@ app.get('*', (req, res) => {
   res.status(404).sendFile(path.join(__dirname, '..', 'public', '404.html'));
 });
 
+// Export the handler for Vercel
 module.exports = app;
