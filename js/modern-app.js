@@ -15,6 +15,7 @@ class UnitDecoderApp {
         this.debounceDelay = 300;
         this.currentSearchQuery = '';
         this.activeSearchController = null;
+        this.selectedUnitId = null;
 
         this.init();
     }
@@ -173,8 +174,11 @@ class UnitDecoderApp {
                 this.renderSearchResults(unique);
             }
         } catch (error) {
-            console.error('Search error:', error);
-            resultsEl.innerHTML = '<div class="error">Search failed. Please try again.</div>';
+            // Don't show error for aborted requests (user typing quickly)
+            if (error.name !== 'AbortError') {
+                console.error('Search error:', error);
+                resultsEl.innerHTML = '<div class="error">Search failed. Please try again.</div>';
+            }
         }
     }
 
@@ -505,6 +509,7 @@ class UnitDecoderApp {
     // Show unit detail on homepage
     async showUnitDetail(unitId) {
         try {
+            this.selectedUnitId = unitId;
             const response = await fetch(`/api/units/${unitId}`);
             if (!response.ok) throw new Error('Unit not found');
             
@@ -629,8 +634,8 @@ class UnitDecoderApp {
                 },
                 body: JSON.stringify({
                     value: parseFloat(value),
-                    from_unit: document.getElementById('selected-unit-name').textContent,
-                    to_unit: document.getElementById('targetUnit').selectedOptions[0].textContent
+                    fromUnitId: this.selectedUnitId,
+                    toUnitId: parseInt(document.getElementById('targetUnit').value)
                 })
             });
             
@@ -638,7 +643,8 @@ class UnitDecoderApp {
             
             const result = await response.json();
             resultDiv.innerHTML = `
-                <strong>${value} ${document.getElementById('selected-unit-name').textContent} = ${result.converted_value} ${result.to_unit}</strong>
+                <strong>${value} ${result.fromUnit.name} = ${result.result} ${result.toUnit.name}</strong>
+                <br><small>Formula: ${result.formula}</small>
             `;
             resultDiv.style.display = 'block';
             
