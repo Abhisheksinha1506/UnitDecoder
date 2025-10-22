@@ -1,5 +1,6 @@
 // Single Page App for Unit Decoder
 // Modern product-listing style implementation
+// Version: 2024-10-22-fixed
 
 class UnitDecoderApp {
     constructor() {
