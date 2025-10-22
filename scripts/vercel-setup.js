@@ -145,6 +145,14 @@ try {
   }
   
   db.close();
+  
+  // Ensure public directory exists for Vercel
+  const publicDir = path.join(__dirname, '..', 'public');
+  if (!fs.existsSync(publicDir)) {
+    console.log('📁 Creating public directory...');
+    fs.mkdirSync(publicDir, { recursive: true });
+  }
+  
   console.log('🎉 Vercel setup completed successfully!');
   
 } catch (error) {
