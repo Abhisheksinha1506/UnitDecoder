@@ -800,3 +800,4 @@ if (document.readyState === 'loading') {
     app = new UnitDecoderApp();
     window.app = app; // Make app globally accessible
 }
+// Force deployment Wed Oct 22 19:05:13 IST 2025

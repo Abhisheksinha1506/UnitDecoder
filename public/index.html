@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Unit Decoder - Discover Global Measurement Units</title>
+    <link rel="stylesheet" href="/css/modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234F46E5'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span class="brand-name">Unit Decoder</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main App Container -->
+    <div id="app" class="app-container">
+        <!-- Home/Search Page -->
+        <section id="home-page" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Units from Around the World</h1>
+                    <p class="hero-subtitle">From ancient tola to modern metrics - explore the world's measurement heritage</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-wrapper">
+                        <div class="search-box">
+                            <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <input type="text" id="searchInput" placeholder="Search for any unit (e.g., tola, maund, shaku)..." autocomplete="off">
+                        </div>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unit Detail Section (Hidden by default) -->
+            <div id="unit-detail-section" class="unit-detail-section" style="display: none;">
+                <div class="unit-detail-container">
+                    <div class="unit-header">
+                        <h2 id="selected-unit-name"></h2>
+                        <span class="badge" id="selected-unit-category"></span>
+                    </div>
+
+                    <div class="unit-info-compact">
+                        <div class="unit-meta-grid">
+                            <div class="meta-item" id="region-meta" style="display: none;">
+                                <span class="meta-label">Region</span>
+                                <span class="meta-value" id="selected-unit-region"></span>
+                            </div>
+                            <div class="meta-item" id="era-meta" style="display: none;">
+                                <span class="meta-label">Era</span>
+                                <span class="meta-value" id="selected-unit-era"></span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Base Unit</span>
+                                <span class="meta-value" id="selected-unit-base"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="unit-description-compact" id="unit-description-section" style="display: none;">
+                            <p id="selected-unit-description"></p>
+                            <a href="#" target="_blank" rel="noopener" class="source-link" id="selected-unit-source" style="display: none;">
+                                View source
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="conversion">
+                        <h3>Convert This Unit</h3>
+                        <div class="converter">
+                            <input type="number" id="convertValue" placeholder="Enter value" step="any">
+                            <select id="targetUnit">
+                                <option value="">Select target unit...</option>
+                            </select>
+                            <button id="convertBtn" class="btn btn-primary">Convert</button>
+                        </div>
+                        <div id="conversionResult" class="conversion-result" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalUnits">30+</div>
+                    <div class="stat-label">Units Available</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Global</div>
+                    <div class="stat-label">Coverage</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unit Detail Page -->
+        <section id="unit-page" class="page">
+            <div class="unit-detail-container">
+                <button class="back-btn" onclick="window.location.hash = '#/'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Search
+                </button>
+                <div id="unitContent">
+                    <!-- Unit details will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Submit Page -->
+        <section id="submit-page" class="page">
+            <div class="form-container">
+                <button class="back-btn" onclick="window.location.hash = '#/'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Home
+                </button>
+                
+                <div class="form-header">
+                    <h2>Submit a New Unit</h2>
+                    <p>Help us grow the database by contributing a new measurement unit</p>
+                </div>
+
+                <form id="submitForm" class="submit-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="unitName">Unit Name *</label>
+                            <input id="unitName" type="text" placeholder="e.g., Tola" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="unitCategory">Category *</label>
+                            <select id="unitCategory" required>
+                                <option value="">Select category</option>
+                                <option value="Length">Length</option>
+                                <option value="Mass">Mass</option>
+                                <option value="Volume">Volume</option>
+                                <option value="Area">Area</option>
+                                <option value="Time">Time</option>
+                                <option value="Temperature">Temperature</option>
+                                <option value="Speed">Speed</option>
+                                <option value="Counting">Counting</option>
+                                <option value="Currency (Historical)">Currency (Historical)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="baseUnit">Base Unit *</label>
+                            <input id="baseUnit" type="text" placeholder="e.g., Gram" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="conversionFactor">Conversion Factor *</label>
+                            <input id="conversionFactor" type="number" step="any" placeholder="e.g., 11.6638038" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="region">Region</label>
+                            <input id="region" type="text" placeholder="e.g., India">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="era">Era</label>
+                            <input id="era" type="text" placeholder="e.g., Historical">
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="4" placeholder="Brief description of the unit"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="sourceUrl">Source URL</label>
+                        <input id="sourceUrl" type="url" placeholder="https://...">
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Submit Unit</button>
+                        <button type="reset" class="btn btn-secondary">Reset Form</button>
+                    </div>
+                    
+                    <div id="submitStatus" class="status-message"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Pending Page -->
+        <section id="pending-page" class="page">
+            <div class="pending-container">
+                <button class="back-btn" onclick="window.location.hash = '#/'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                    </svg>
+                    Back to Home
+                </button>
+                
+                <div class="section-header">
+                    <h2>Pending Submissions</h2>
+                    <p>Vote on community-submitted units to help verify them</p>
+                </div>
+                
+                <div id="pendingList" class="pending-list">
+                    <!-- Pending units will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="/js/modern-app.js"></script>
+</body>
+</html>

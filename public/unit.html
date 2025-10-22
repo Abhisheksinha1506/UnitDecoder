@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Details - The Unit Decoder</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">The Unit Decoder</a></h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Loading unit details...</p>
+            </div>
+
+            <div id="unitDetails" class="unit-details" style="display: none;">
+                <div class="unit-header">
+                    <h2 id="unitName"></h2>
+                    <span id="unitCategory" class="category-badge"></span>
+                </div>
+
+                <div class="unit-info">
+                    <div class="info-item">
+                        <strong>Region:</strong> <span id="unitRegion"></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Era:</strong> <span id="unitEra"></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Conversion:</strong> <span id="unitConversion"></span>
+                    </div>
+                    <div class="info-item">
+                        <strong>Aliases:</strong> <span id="unitAliases"></span>
+                    </div>
+                </div>
+
+                <div class="unit-description">
+                    <h3>Description</h3>
+                    <p id="unitDescription"></p>
+                </div>
+
+                <div class="unit-source">
+                    <h3>Source</h3>
+                    <a id="unitSource" href="#" target="_blank" rel="noopener">View source</a>
+                </div>
+
+                <div class="conversion-calculator">
+                    <h3>Convert This Unit</h3>
+                    <div class="calculator-form">
+                        <div class="input-group">
+                            <label for="convertValue">Value:</label>
+                            <input type="number" id="convertValue" placeholder="Enter value" step="any">
+                        </div>
+                        <div class="input-group">
+                            <label for="targetUnit">To:</label>
+                            <select id="targetUnit">
+                                <option value="">Select target unit...</option>
+                            </select>
+                        </div>
+                        <button id="convertBtn" class="btn btn-primary">Convert</button>
+                    </div>
+                    <div id="conversionResult" class="conversion-result"></div>
+                </div>
+            </div>
+
+            <div id="error" class="error" style="display: none;">
+                <h2>Unit Not Found</h2>
+                <p>The requested unit could not be found.</p>
+                <a href="/" class="btn btn-primary">Back to Search</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Data sourced from <a href="https://en.wikipedia.org" target="_blank" rel="noopener">Wikipedia (CC BY-SA)</a></p>
+        </div>
+    </footer>
+
+    <script src="/js/unit.js"></script>
+</body>
+</html>
