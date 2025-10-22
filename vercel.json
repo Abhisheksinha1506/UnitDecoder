@@ -2,6 +2,21 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".",
+  "functions": {
+    "server.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
   "env": {
     "NODE_ENV": "production",
     "DB_PATH": "/tmp/unit_decoder.db"
