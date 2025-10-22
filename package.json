@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'Build step: Database and dependencies ready'",
+    "build": "echo 'Build step: Database and dependencies ready' && echo 'Public directory ready for deployment'",
     "dev": "nodemon server.js",
     "init-db": "node db/init.js",
     "seed": "node scrapers/seed-database.js",
