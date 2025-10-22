@@ -1,5 +1,57 @@
 const Database = require('better-sqlite3');
 
+// Fallback data for when database is not available
+const fallbackUnits = [
+  {
+    id: 1,
+    name: 'Kilogram',
+    category: 'Mass',
+    base_unit: 'kilogram',
+    conversion_factor: 1.0,
+    description: 'The base unit of mass in the International System of Units (SI)',
+    region: 'International',
+    era: 'Modern',
+    source_url: 'https://en.wikipedia.org/wiki/Kilogram',
+    status: 'verified'
+  },
+  {
+    id: 2,
+    name: 'Gram',
+    category: 'Mass',
+    base_unit: 'kilogram',
+    conversion_factor: 0.001,
+    description: 'A metric unit of mass equal to one thousandth of a kilogram',
+    region: 'International',
+    era: 'Modern',
+    source_url: 'https://en.wikipedia.org/wiki/Gram',
+    status: 'verified'
+  },
+  {
+    id: 3,
+    name: 'Tola',
+    category: 'Mass',
+    base_unit: 'gram',
+    conversion_factor: 11.6638038,
+    description: 'Traditional unit of mass used in South Asia, particularly in India and Pakistan',
+    region: 'South Asia',
+    era: 'Traditional',
+    source_url: 'https://en.wikipedia.org/wiki/Tola_(unit)',
+    status: 'verified'
+  },
+  {
+    id: 4,
+    name: 'Foot',
+    category: 'Length',
+    base_unit: 'meter',
+    conversion_factor: 0.3048,
+    description: 'Imperial unit of length equal to 12 inches',
+    region: 'United States',
+    era: 'Imperial',
+    source_url: 'https://en.wikipedia.org/wiki/Foot_(unit)',
+    status: 'verified'
+  }
+];
+
 module.exports = async (req, res) => {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,8 +70,12 @@ module.exports = async (req, res) => {
   try {
     const { fromUnitId, toUnitId, value } = req.body;
     
+    // Debug logging
+    console.log('Convert API received:', { fromUnitId, toUnitId, value });
+    
     // Validate input
     if (!fromUnitId || !toUnitId || value === undefined) {
+      console.log('Missing required fields:', { fromUnitId, toUnitId, value });
       return res.status(400).json({
         error: 'Missing required fields',
         message: 'fromUnitId, toUnitId, and value are required'
@@ -37,15 +93,28 @@ module.exports = async (req, res) => {
       });
     }
     
-    // Initialize database connection for serverless environment
-    const dbPath = process.env.DB_PATH || '/tmp/unit_decoder.db';
-    const db = new Database(dbPath);
+    // Try to use database first, fallback to static data
+    let fromUnit, toUnit;
     
-    // Get both units
-    const fromUnit = db.prepare('SELECT * FROM units WHERE id = ? AND status = ?').get(fromId, 'verified');
-    const toUnit = db.prepare('SELECT * FROM units WHERE id = ? AND status = ?').get(toId, 'verified');
+    try {
+      const dbPath = process.env.DB_PATH || '/tmp/unit_decoder.db';
+      const db = new Database(dbPath);
+      
+      fromUnit = db.prepare('SELECT * FROM units WHERE id = ? AND status = ?').get(fromId, 'verified');
+      toUnit = db.prepare('SELECT * FROM units WHERE id = ? AND status = ?').get(toId, 'verified');
+      
+      db.close();
+    } catch (dbError) {
+      console.log('Database not available, using fallback data');
+    }
     
-    db.close();
+    // Use fallback data if database units not found
+    if (!fromUnit) {
+      fromUnit = fallbackUnits.find(u => u.id === fromId);
+    }
+    if (!toUnit) {
+      toUnit = fallbackUnits.find(u => u.id === toId);
+    }
     
     if (!fromUnit) {
       return res.status(404).json({
