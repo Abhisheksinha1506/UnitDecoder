@@ -231,10 +231,10 @@ class UnitDecoderApp {
         const wrapper = document.querySelector('.search-wrapper');
         const wrapperRect = wrapper ? wrapper.getBoundingClientRect() : inputRect;
 
-        // Position the dropdown below the search input
+        // Position the dropdown directly under the input (fixed, viewport-based)
         resultsEl.style.position = 'fixed';
-        resultsEl.style.top = `${inputRect.bottom + window.scrollY + 4}px`;
-        resultsEl.style.left = `${wrapperRect.left + window.scrollX}px`;
+        resultsEl.style.top = `${inputRect.bottom + 4}px`;
+        resultsEl.style.left = `${wrapperRect.left}px`;
         resultsEl.style.width = `${wrapperRect.width}px`;
         resultsEl.style.zIndex = '99999';
     }
