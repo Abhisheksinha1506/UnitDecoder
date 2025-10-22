@@ -330,7 +330,6 @@ body {
     left: auto;
     right: auto;
     width: auto;
-    min-width: 100%;
     border: 1px solid var(--border-light);
     z-index: 99999;
     backdrop-filter: blur(8px);
@@ -372,7 +371,7 @@ body {
     /* Ensure proper stacking context */
     isolation: isolate;
     /* Make sure it's not clipped by any parent container */
-    position: absolute !important;
+    position: absolute !important; /* keep absolute for stacking context */
     /* Ensure it can extend beyond parent boundaries */
     clip: none;
     /* Force a new stacking context */
