@@ -1,15 +1,42 @@
 {
   "version": 2,
   "buildCommand": "npm run build",
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs22.x"
-    }
-  },
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
+      "src": "/api/search",
+      "dest": "/api/search.js"
+    },
+    {
+      "src": "/api/convert",
+      "dest": "/api/convert.js"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/health.js"
+    },
+    {
+      "src": "/api/test",
+      "dest": "/api/test.js"
+    },
+    {
+      "src": "/api/units/([^/]+)",
+      "dest": "/api/units/[id].js"
+    },
+    {
+      "src": "/api/units/category/([^/]+)",
+      "dest": "/api/units/category/[category].js"
+    },
+    {
+      "src": "/api/submit",
+      "dest": "/api/submit.js"
+    },
+    {
+      "src": "/api/vote",
+      "dest": "/api/vote.js"
+    },
+    {
+      "src": "/api/submissions/pending",
+      "dest": "/api/submissions/pending.js"
     },
     {
       "src": "/(.*)",
