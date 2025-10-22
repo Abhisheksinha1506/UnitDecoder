@@ -1,19 +1,11 @@
-module.exports = async (req, res) => {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Content-Type', 'application/json');
+const express = require('express');
+const router = express.Router();
 
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+/**
+ * Vote on a unit submission
+ * POST /api/vote
+ */
+router.post('/', async (req, res) => {
   try {
     const { submissionId, vote } = req.body;
     
@@ -24,13 +16,14 @@ module.exports = async (req, res) => {
       });
     }
     
-    // For now, just return a success response
-    // In a real implementation, this would save the vote to a database
+    // For Vercel deployment, we'll simulate the voting
+    // In a real implementation, this would save to a database
     res.json({
       success: true,
       message: 'Vote recorded',
       submissionId,
-      vote
+      vote,
+      timestamp: new Date().toISOString()
     });
   } catch (error) {
     console.error('Vote error:', error);
@@ -39,4 +32,6 @@ module.exports = async (req, res) => {
       message: 'An error occurred while recording the vote'
     });
   }
-};
+});
+
+module.exports = router;

@@ -23,6 +23,9 @@ if (config.performance?.enableMonitoring && process.env.NODE_ENV !== 'test') {
 const searchRoutes = require('../routes/search');
 const unitsRoutes = require('../routes/units');
 const convertRoutes = require('../routes/convert');
+const submitRoutes = require('./submit');
+const voteRoutes = require('./vote');
+const pendingRoutes = require('./submissions/pending');
 
 const app = express();
 
@@ -46,6 +49,9 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/api/search', searchRoutes);
 app.use('/api/units', unitsRoutes);
 app.use('/api/convert', convertRoutes);
+app.use('/api/submit', submitRoutes);
+app.use('/api/vote', voteRoutes);
+app.use('/api/submissions', pendingRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

@@ -1,0 +1,102 @@
+Degree|Angle|Degree|1.0|Common unit of angle measurement, 1/360 of a circle|International|Modern|https://en.wikipedia.org/wiki/Degree_(angle)
+Gradian|Angle|Degree|0.9|Unit of angle measurement, 1/400 of a circle|International|Modern|https://en.wikipedia.org/wiki/Gradian
+Radian|Angle|Degree|57.2958|SI unit of angle measurement, based on radius|International|Modern|https://en.wikipedia.org/wiki/Radian
+Acre|Area|Square Meter|4046.86|Traditional unit of area, originally the area a yoke of oxen could plow in a day|International|Historical|https://en.wikipedia.org/wiki/Acre
+Hectare|Area|Square Meter|10000.0|Metric unit of area, 100 meters by 100 meters|International|Modern|https://en.wikipedia.org/wiki/Hectare
+Rood|Area|Square Meter|1011.714|Traditional English unit of area, quarter of an acre|United Kingdom|Historical|https://en.wikipedia.org/wiki/Rood_(unit)
+Square Meter|Area|Square Meter|1.0|Base unit of area in the metric system|International|Modern|https://en.wikipedia.org/wiki/Square_metre
+Baker's Dozen|Counting|Unit|13.0|A group of thirteen items, traditionally used by bakers|International|Modern|https://en.wikipedia.org/wiki/Baker%27s_dozen
+Dozen|Counting|Unit|12.0|A group of twelve items|International|Modern|https://en.wikipedia.org/wiki/Dozen
+Gross|Counting|Unit|144.0|A group of 144 items (12 dozen)|International|Modern|https://en.wikipedia.org/wiki/Gross_(unit)
+Score|Counting|Unit|20.0|A group of twenty items|International|Historical|https://en.wikipedia.org/wiki/Score_(unit)
+Ducat|Currency (Historical)|Unit|1.0|Historical gold coin used in medieval Europe|Europe|Medieval|https://en.wikipedia.org/wiki/Ducat
+Florin|Currency (Historical)|Unit|1.0|Historical gold coin, predecessor to the ducat|Europe|Medieval|https://en.wikipedia.org/wiki/Florin
+Guinea|Currency (Historical)|Unit|1.0|Historical British gold coin, worth 21 shillings|United Kingdom|Historical|https://en.wikipedia.org/wiki/Guinea_(coin)
+Bit|Data Storage|Bit|1.0|Base unit of digital information, binary digit|International|Modern|https://en.wikipedia.org/wiki/Bit
+Byte|Data Storage|Bit|8.0|8 bits, basic unit of digital storage|International|Modern|https://en.wikipedia.org/wiki/Byte
+Gigabyte|Data Storage|Bit|8589934592.0|1024 megabytes, digital storage unit|International|Modern|https://en.wikipedia.org/wiki/Gigabyte
+Kilobyte|Data Storage|Bit|8192.0|1024 bytes, digital storage unit|International|Modern|https://en.wikipedia.org/wiki/Kilobyte
+Megabyte|Data Storage|Bit|8388608.0|1024 kilobytes, digital storage unit|International|Modern|https://en.wikipedia.org/wiki/Megabyte
+Terabyte|Data Storage|Bit|8796093022208.0|1024 gigabytes, digital storage unit|International|Modern|https://en.wikipedia.org/wiki/Terabyte
+Ampere|Electrical|Ampere|1.0|Base unit of electric current in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Ampere
+Farad|Electrical|Farad|1.0|Base unit of electrical capacitance in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Farad
+Ohm|Electrical|Ohm|1.0|Base unit of electrical resistance in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Ohm
+Volt|Electrical|Volt|1.0|Base unit of electric potential in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Volt
+BTU|Energy|Joule|1055.06|British Thermal Unit, commonly used in heating and cooling|United Kingdom|Modern|https://en.wikipedia.org/wiki/British_thermal_unit
+Calorie|Energy|Joule|4.184|Unit of energy, commonly used in nutrition|International|Modern|https://en.wikipedia.org/wiki/Calorie
+Joule|Energy|Joule|1.0|Base unit of energy in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Joule
+Kilocalorie|Energy|Joule|4184.0|1000 calories, commonly used in food labeling|International|Modern|https://en.wikipedia.org/wiki/Kilocalorie
+Kilowatt Hour|Energy|Joule|3600000.0|Unit of energy, commonly used for electricity billing|International|Modern|https://en.wikipedia.org/wiki/Kilowatt_hour
+Kilogram-force|Force|Newton|9.80665|Metric unit of force, weight of 1 kilogram|International|Modern|https://en.wikipedia.org/wiki/Kilogram-force
+Newton|Force|Newton|1.0|Base unit of force in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Newton_(unit)
+Pound-force|Force|Newton|4.44822|Imperial unit of force, commonly used in the US|United States|Modern|https://en.wikipedia.org/wiki/Pound_(force)
+Gigahertz|Frequency|Hertz|1000000000.0|1,000,000,000 hertz, commonly used for modern processors|International|Modern|https://en.wikipedia.org/wiki/Gigahertz
+Hertz|Frequency|Hertz|1.0|Base unit of frequency in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Hertz
+Kilohertz|Frequency|Hertz|1000.0|1000 hertz, commonly used for radio frequencies|International|Modern|https://en.wikipedia.org/wiki/Kilohertz
+Megahertz|Frequency|Hertz|1000000.0|1,000,000 hertz, commonly used for computer processors|International|Modern|https://en.wikipedia.org/wiki/Megahertz
+1⁄2 gallon|Length|Meter|2.0|Traditional United Kingdom unit of length|United Kingdom|Historical|https://en.wikipedia.org/wiki/Imperial_units
+Alen|Length|Meter|0.6277|Traditional Scandinavian unit of length|Scandinavia|Traditional|https://en.wikipedia.org/wiki/Alen
+Centimeter|Length|Meter|0.01|One hundredth of a meter|International|Modern|https://en.wikipedia.org/wiki/Centimetre
+Cubit|Length|Meter|0.4572|Traditional unit of length, used in Pacific cultures|Pacific Islands|Traditional|https://en.wikipedia.org/wiki/Cubit
+Foot|Length|Meter|0.3048|Imperial unit of length, 12 inches|United States, United Kingdom|Modern|https://en.wikipedia.org/wiki/Foot_(unit)
+Inch|Length|Meter|0.0254|Imperial unit of length, 1/12 of a foot|United States, United Kingdom|Modern|https://en.wikipedia.org/wiki/Inch
+Kilometer|Length|Meter|1000.0|1000 meters|International|Modern|https://en.wikipedia.org/wiki/Kilometre
+Meter|Length|Meter|1.0|Base unit of length in the metric system|International|Modern|https://en.wikipedia.org/wiki/Meter
+Mile|Length|Meter|1609.34|Imperial unit of length, 5280 feet|United States, United Kingdom|Modern|https://en.wikipedia.org/wiki/Mile
+Millimeter|Length|Meter|0.001|One thousandth of a meter|International|Modern|https://en.wikipedia.org/wiki/Millimetre
+Vara|Length|Meter|0.8359|Traditional Spanish unit of length|Latin America|Colonial|https://en.wikipedia.org/wiki/Vara
+Arroba|Mass|Kilogram|11.5|Traditional Spanish unit of weight, used in Brazil|Brazil|Colonial|https://en.wikipedia.org/wiki/Arroba
+Dirham|Mass|Gram|3.2|Traditional Arabic unit of weight|Middle East|Historical|https://en.wikipedia.org/wiki/Dirham
+Gram|Mass|Gram|1.0|Base unit of mass in the metric system|International|Modern|https://en.wikipedia.org/wiki/Gram
+Kantar|Mass|Kilogram|44.928|Traditional Egyptian unit of weight|Egypt|Traditional|https://en.wikipedia.org/wiki/Kantar
+Kilogram|Mass|Gram|1000.0|1000 grams, base unit of mass in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Kilogram
+Maund|Mass|Kilogram|37.3242|Traditional South Asian unit of mass; standardized in British India to ~37.3242 kg|Indian subcontinent|Historical|https://en.wikipedia.org/wiki/Maund
+Milligram|Mass|Gram|0.001|One thousandth of a gram|International|Modern|https://en.wikipedia.org/wiki/Milligram
+Ounce|Mass|Gram|28.3495|Imperial unit of mass, 1/16 of a pound|United States, United Kingdom|Modern|https://en.wikipedia.org/wiki/Ounce
+Pound|Mass|Gram|453.592|Imperial unit of mass, approximately 453.592 grams|United States, United Kingdom|Modern|https://en.wikipedia.org/wiki/Pound_(mass)
+Seer|Mass|Gram|933.1|Traditional South Asian unit of mass; values varied regionally|Indian subcontinent|Historical|https://en.wikipedia.org/wiki/Seer_(unit)
+Tael|Mass|Gram|37.5|Traditional Chinese unit of weight|China|Traditional|https://en.wikipedia.org/wiki/Tael
+Tical|Mass|Gram|15.244|Traditional Thai unit of weight|Thailand|Traditional|https://en.wikipedia.org/wiki/Tical
+Tola|Mass|Gram|11.6638|Traditional South Asian unit of mass, widely used for gold and precious metals|Indian subcontinent|Historical|https://en.wikipedia.org/wiki/Tola
+Horsepower|Power|Watt|745.7|Imperial unit of power, commonly used for engines|United Kingdom|Modern|https://en.wikipedia.org/wiki/Horsepower
+Kilowatt|Power|Watt|1000.0|1000 watts, commonly used for electrical power|International|Modern|https://en.wikipedia.org/wiki/Kilowatt
+Watt|Power|Watt|1.0|Base unit of power in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Watt
+Atmosphere|Pressure|Pascal|101325.0|Standard atmospheric pressure at sea level|International|Modern|https://en.wikipedia.org/wiki/Atmosphere_(unit)
+Bar|Pressure|Pascal|100000.0|Metric unit of pressure, 100,000 pascals|International|Modern|https://en.wikipedia.org/wiki/Bar_(unit)
+PSI|Pressure|Pascal|6894.76|Pounds per square inch, commonly used in the US|United States|Modern|https://en.wikipedia.org/wiki/Pounds_per_square_inch
+Pascal|Pressure|Pascal|1.0|Base unit of pressure in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Pascal_(unit)
+Torr|Pressure|Pascal|133.322|Unit of pressure, 1/760 of an atmosphere|International|Modern|https://en.wikipedia.org/wiki/Torr
+Foot per Second|Speed|Meter per Second|0.3048|Imperial unit of speed|United States|Modern|https://en.wikipedia.org/wiki/Foot_per_second
+Kilometer per Hour|Speed|Meter per Second|0.277778|Common unit of speed, 1000 meters per hour|International|Modern|https://en.wikipedia.org/wiki/Kilometres_per_hour
+Knot|Speed|Meter per Second|0.514444|Nautical speed unit, 1 knot = 1 nautical mile per hour|International|Modern|https://en.wikipedia.org/wiki/Knot_(unit)
+Mach|Speed|Meter per Second|343.2|Speed relative to the speed of sound in air|International|Modern|https://en.wikipedia.org/wiki/Mach_number
+Meter per Second|Speed|Meter per Second|1.0|Base unit of speed in the metric system|International|Modern|https://en.wikipedia.org/wiki/Metre_per_second
+Mile per Hour|Speed|Meter per Second|0.44704|Imperial unit of speed, commonly used in the US|United States|Modern|https://en.wikipedia.org/wiki/Miles_per_hour
+Celsius|Temperature|Celsius|1.0|Temperature scale where water freezes at 0° and boils at 100°|International|Modern|https://en.wikipedia.org/wiki/Celsius
+Fahrenheit|Temperature|Celsius|0.555556|Temperature scale where water freezes at 32° and boils at 212°|United States|Modern|https://en.wikipedia.org/wiki/Fahrenheit
+Rankine|Temperature|Kelvin|0.555556|Absolute temperature scale based on Fahrenheit|International|Modern|https://en.wikipedia.org/wiki/Rankine_scale
+Réaumur|Temperature|Celsius|1.25|Traditional temperature scale, 0°R = 0°C, 80°R = 100°C|Europe|Historical|https://en.wikipedia.org/wiki/Réaumur_scale
+Day|Time|Second|86400.0|24 hours, 86400 seconds|International|Modern|https://en.wikipedia.org/wiki/Day
+Decade|Time|Year|10.0|Unit of time, 10 years|International|Modern|https://en.wikipedia.org/wiki/Decade
+Fortnight|Time|Day|14.0|Traditional unit of time, 14 days or 2 weeks|United Kingdom|Traditional|https://en.wikipedia.org/wiki/Fortnight
+Hour|Time|Second|3600.0|3600 seconds, 60 minutes|International|Modern|https://en.wikipedia.org/wiki/Hour
+Lustrum|Time|Year|5.0|Ancient Roman unit of time, 5 years|Ancient Rome|Ancient|https://en.wikipedia.org/wiki/Lustrum
+Minute|Time|Second|60.0|60 seconds, commonly used unit of time|International|Modern|https://en.wikipedia.org/wiki/Minute
+Month|Time|Second|2629746.0|Average month, approximately 30.44 days|International|Modern|https://en.wikipedia.org/wiki/Month
+Second|Time|Second|1.0|Base unit of time in the International System of Units|International|Modern|https://en.wikipedia.org/wiki/Second
+Week|Time|Second|604800.0|7 days, 168 hours|International|Modern|https://en.wikipedia.org/wiki/Week
+Year|Time|Second|31556952.0|365.25 days, accounting for leap years|International|Modern|https://en.wikipedia.org/wiki/Year
+Cubic Centimeter|Volume|Liter|0.001|One thousandth of a liter, commonly used in medicine and chemistry|International|Modern|https://en.wikipedia.org/wiki/Cubic_centimetre
+Cubic Decimeter|Volume|Liter|1.0|One liter, equivalent to 1000 cubic centimeters|International|Modern|https://en.wikipedia.org/wiki/Cubic_decimetre
+Cubic Meter|Volume|Liter|1000.0|Base unit of volume in the metric system, 1000 liters|International|Modern|https://en.wikipedia.org/wiki/Cubic_metre
+Cup|Volume|Liter|0.236588|US customary cup, commonly used in cooking|United States|Modern|https://en.wikipedia.org/wiki/Cup_(unit)
+Fluid Ounce|Volume|Liter|0.0295735|US fluid ounce, 1/16 of a pint|United States|Modern|https://en.wikipedia.org/wiki/Fluid_ounce
+Gallon|Volume|Liter|3.78541|US liquid gallon, commonly used in the United States|United States|Modern|https://en.wikipedia.org/wiki/Gallon
+Imperial Gallon|Volume|Liter|4.54609|British imperial gallon, used in the UK and Commonwealth|United Kingdom|Modern|https://en.wikipedia.org/wiki/Imperial_gallon
+Liter|Volume|Liter|1.0|Base unit of volume in the metric system|International|Modern|https://en.wikipedia.org/wiki/Litre
+Milliliter|Volume|Liter|0.001|One thousandth of a liter|International|Modern|https://en.wikipedia.org/wiki/Millilitre
+Pint|Volume|Liter|0.473176|US liquid pint, half of a quart|United States|Modern|https://en.wikipedia.org/wiki/Pint
+Quart|Volume|Liter|0.946353|US liquid quart, quarter of a gallon|United States|Modern|https://en.wikipedia.org/wiki/Quart
+Tablespoon|Volume|Liter|0.0147868|US tablespoon, commonly used in cooking|United States|Modern|https://en.wikipedia.org/wiki/Tablespoon
+Teaspoon|Volume|Liter|0.00492892|US teaspoon, commonly used in cooking|United States|Modern|https://en.wikipedia.org/wiki/Teaspoon
+Tunna|Volume|Liter|146.9|Traditional Swedish unit of volume|Sweden|Traditional|https://en.wikipedia.org/wiki/Tunna

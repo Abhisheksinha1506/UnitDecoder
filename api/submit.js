@@ -1,26 +1,40 @@
-module.exports = async (req, res) => {
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Content-Type', 'application/json');
+const express = require('express');
+const router = express.Router();
 
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+/**
+ * Submit a new unit for review
+ * POST /api/submit
+ */
+router.post('/', async (req, res) => {
   try {
-    // For now, just return a success response
+    const { name, category, base_unit, conversion_factor, region, era, description, source_url } = req.body;
+    
+    // Validate required fields
+    if (!name || !category || !base_unit || conversion_factor === undefined) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        message: 'name, category, base_unit, and conversion_factor are required'
+      });
+    }
+    
+    // For Vercel deployment, we'll simulate the submission
     // In a real implementation, this would save to a database
+    const submissionId = Math.floor(Math.random() * 10000) + 1;
+    
     res.json({
       success: true,
       message: 'Unit submission received and will be reviewed',
-      id: Math.floor(Math.random() * 1000) + 1
+      id: submissionId,
+      submittedData: {
+        name,
+        category,
+        base_unit,
+        conversion_factor,
+        region: region || '',
+        era: era || '',
+        description: description || '',
+        source_url: source_url || ''
+      }
     });
   } catch (error) {
     console.error('Submit error:', error);
@@ -29,4 +43,6 @@ module.exports = async (req, res) => {
       message: 'An error occurred while submitting the unit'
     });
   }
-};
+});
+
+module.exports = router;

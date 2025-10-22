@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "node scripts/vercel-setup.js",
-    "vercel-build": "node scripts/vercel-setup.js",
+    "vercel-build": "node scripts/vercel-setup-simple.js",
     "dev": "nodemon server.js",
     "init-db": "node db/init.js",
     "seed": "node scrapers/seed-database.js",
