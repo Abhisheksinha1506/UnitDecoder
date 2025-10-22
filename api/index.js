@@ -3,14 +3,15 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
-const config = require('./config');
-const { startVerificationWorker } = require('./utils/verification');
+// Import from root directory
+const config = require('../config');
+const { startVerificationWorker } = require('../utils/verification');
 
 // Performance monitoring (disabled during tests)
 let performanceMonitor = null;
 if (config.performance?.enableMonitoring && process.env.NODE_ENV !== 'test') {
   try {
-    const PerformanceMonitor = require('./scripts/performance-monitor');
+    const PerformanceMonitor = require('../scripts/performance-monitor');
     performanceMonitor = new PerformanceMonitor();
     performanceMonitor.start();
   } catch (error) {
@@ -19,9 +20,9 @@ if (config.performance?.enableMonitoring && process.env.NODE_ENV !== 'test') {
 }
 
 // Import routes
-const searchRoutes = require('./routes/search');
-const unitsRoutes = require('./routes/units');
-const convertRoutes = require('./routes/convert');
+const searchRoutes = require('../routes/search');
+const unitsRoutes = require('../routes/units');
+const convertRoutes = require('../routes/convert');
 
 const app = express();
 
@@ -39,7 +40,7 @@ if (performanceMonitor) {
 }
 
 // Serve static files from public directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // API routes
 app.use('/api/search', searchRoutes);
@@ -75,18 +76,16 @@ app.use('/api/*', (req, res) => {
 
 // Serve frontend pages
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 app.get('/unit', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'unit.html'));
+  res.sendFile(path.join(__dirname, '..', 'public', 'unit.html'));
 });
-
-
 
 // 404 handler for frontend routes
 app.get('*', (req, res) => {
-  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'));
+  res.status(404).sendFile(path.join(__dirname, '..', 'public', '404.html'));
 });
 
 // Start server only when run directly (not when imported by tests)
