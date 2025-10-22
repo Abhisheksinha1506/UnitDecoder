@@ -1,0 +1,48 @@
+{
+  "name": "unit-decoder",
+  "version": "1.0.0",
+  "description": "A community-driven encyclopedia and converter for niche, historical, and regional units of measurement",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "init-db": "node db/init.js",
+    "seed": "node scrapers/seed-database.js",
+    "backup-db": "node scripts/backup-db.js",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "test:unit": "jest __tests__/unit --runInBand",
+    "test:integration": "jest __tests__/integration --runInBand",
+    "test:api": "jest __tests__/api --runInBand",
+    "test:everything": "node scripts/test-everything.js",
+    "perf": "node scripts/performance-test.js",
+    "monitor": "node scripts/performance-monitor.js",
+    "setup-perf": "node scripts/setup-performance.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "better-sqlite3": "^9.2.2",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "natural": "^6.7.0",
+    "unidecode": "^0.1.8"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^7.1.4"
+  },
+  "keywords": [
+    "units",
+    "measurement",
+    "conversion",
+    "historical",
+    "regional",
+    "community"
+  ],
+  "author": "The Unit Decoder Team",
+  "license": "MIT"
+}
