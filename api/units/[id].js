@@ -27,7 +27,17 @@ module.exports = async (req, res) => {
     
     // Initialize database connection for serverless environment
     const dbPath = process.env.DB_PATH || '/tmp/unit_decoder.db';
-    const db = new Database(dbPath);
+    
+    let db;
+    try {
+      db = new Database(dbPath);
+    } catch (dbError) {
+      console.error('Database connection error:', dbError);
+      return res.status(500).json({
+        error: 'Database unavailable',
+        message: 'Database is not accessible'
+      });
+    }
     
     const unit = db.prepare('SELECT * FROM units WHERE id = ? AND status = ?').get(parseInt(id), 'verified');
     
