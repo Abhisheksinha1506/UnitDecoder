@@ -2,15 +2,10 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": ".",
-  "functions": {
-    "server.js": {
-      "runtime": "@vercel/node@3.0.7"
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server.js"
+      "dest": "/api/index.js"
     },
     {
       "src": "/(.*)",
