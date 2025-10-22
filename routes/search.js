@@ -12,7 +12,15 @@ router.get('/', async (req, res) => {
     const query = req.query.q;
     
     if (!query || query.trim().length === 0) {
-      return res.json([]);
+      // Return all verified units when query is empty
+      const db = require('../db/database');
+      const conn = db.getConnection();
+      const allUnits = conn.prepare(`
+        SELECT * FROM units 
+        WHERE status = 'verified'
+        ORDER BY name ASC
+      `).all();
+      return res.json(allUnits);
     }
     
     const results = searchUnits(query.trim());
