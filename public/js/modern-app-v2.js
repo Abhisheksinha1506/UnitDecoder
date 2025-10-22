@@ -200,6 +200,14 @@ class UnitDecoderApp {
             }
             this.activeSearchController = new AbortController();
             const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&_t=${Date.now()}`, { signal: this.activeSearchController.signal });
+            
+            // Check if response is valid JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                console.warn('Response is not JSON, content-type:', contentType);
+                throw new Error(`Invalid response type: ${contentType}`);
+            }
+            
             const data = await response.json();
             
             // De-duplicate by id or name+category
@@ -292,6 +300,11 @@ class UnitDecoderApp {
             const contentType = response.headers.get('content-type');
             if (!contentType || !contentType.includes('application/json')) {
                 console.warn('Response is not JSON, content-type:', contentType);
+                // Set a fallback value
+                const totalEl = document.getElementById('totalUnits');
+                if (totalEl) {
+                    totalEl.textContent = '100+';
+                }
                 return;
             }
             
