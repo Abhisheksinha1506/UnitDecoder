@@ -4,7 +4,7 @@
   "routes": [
     {
       "src": "/api/search",
-      "dest": "/api/search.js"
+      "dest": "/api/search-simple.js"
     },
     {
       "src": "/api/convert",
