@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'No build step required for Node.js app'",
+    "build": "echo 'Build step: Database and dependencies ready'",
     "dev": "nodemon server.js",
     "init-db": "node db/init.js",
     "seed": "node scrapers/seed-database.js",
@@ -45,5 +45,8 @@
     "community"
   ],
   "author": "The Unit Decoder Team",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  }
 }
