@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "node scripts/vercel-setup.js",
-    "vercel-build": "echo 'Build completed'",
+    "vercel-build": "node scripts/vercel-setup.js",
     "dev": "nodemon server.js",
     "init-db": "node db/init.js",
     "seed": "node scrapers/seed-database.js",
@@ -50,6 +50,6 @@
   "author": "The Unit Decoder Team",
   "license": "MIT",
   "engines": {
-    "node": "22.x"
+    "node": "18.x"
   }
 }
