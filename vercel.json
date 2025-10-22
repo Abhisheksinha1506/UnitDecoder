@@ -2,29 +2,8 @@
   "version": 2,
   "buildCommand": "npm run build",
   "functions": {
-    "api/search.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/convert.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/health.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/units/[id].js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/units/category/[category].js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/submit.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/vote.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/submissions/pending.js": {
-      "runtime": "nodejs18.x"
+    "api/*.js": {
+      "runtime": "@vercel/node@3.0.7"
     }
   },
   "routes": [
