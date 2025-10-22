@@ -325,17 +325,16 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 0.5rem;
-    position: fixed;
-    top: auto;
-    left: auto;
-    right: auto;
+    position: fixed; /* fixed to align to viewport coordinates from JS */
+    top: 0; /* default; JS will set exact top */
+    left: 0; /* default; JS will set exact left */
     width: auto;
     border: 1px solid var(--border-light);
     z-index: 99999;
     backdrop-filter: blur(8px);
     /* Ensure dropdown is above all other content */
     transform: translateZ(0);
-    will-change: transform;
+    will-change: transform, top, left, width;
     /* Custom scrollbar styling */
     scrollbar-width: thin;
     scrollbar-color: var(--primary-light) transparent;
@@ -371,11 +370,7 @@ body {
     /* Ensure proper stacking context */
     isolation: isolate;
     /* Make sure it's not clipped by any parent container */
-    position: absolute !important; /* keep absolute for stacking context */
-    /* Ensure it can extend beyond parent boundaries */
     clip: none;
-    /* Force a new stacking context */
-    will-change: transform, opacity;
 }
 
 .result-item {

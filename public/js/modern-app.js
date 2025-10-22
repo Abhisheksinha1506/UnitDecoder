@@ -104,6 +104,10 @@ class UnitDecoderApp {
                 }, 150);
             }
         });
+
+        // Keep dropdown aligned on viewport changes
+        window.addEventListener('resize', () => this.positionDropdown());
+        window.addEventListener('scroll', () => this.positionDropdown(), { passive: true });
         
         // Conversion functionality
         this.setupConversion();
@@ -236,6 +240,8 @@ class UnitDecoderApp {
         resultsEl.style.top = `${inputRect.bottom + 4}px`;
         resultsEl.style.left = `${wrapperRect.left}px`;
         resultsEl.style.width = `${wrapperRect.width}px`;
+        resultsEl.style.maxWidth = `${Math.min(wrapperRect.width, window.innerWidth - 16)}px`;
+        resultsEl.style.right = 'auto';
         resultsEl.style.zIndex = '99999';
     }
 
@@ -614,6 +620,9 @@ class UnitDecoderApp {
             // Close search dropdown and reset search input
             this.closeSearchAndReset();
             
+            // Reset conversion section when unit changes
+            this.resetConversionSection();
+            
             // Load target units for conversion
             await this.loadTargetUnits(unitId);
             
@@ -686,29 +695,48 @@ class UnitDecoderApp {
         }
         
         try {
+            // Get the current unit ID from the selected unit
+            const currentUnitName = document.getElementById('selected-unit-name').textContent;
+            const currentUnitCategory = document.getElementById('selected-unit-category').textContent;
+            
+            // Find current unit ID by searching for it
+            const currentUnitResponse = await fetch(`/api/search?q=${encodeURIComponent(currentUnitName)}`);
+            const currentUnits = await currentUnitResponse.json();
+            const currentUnit = currentUnits.find(u => u.name === currentUnitName && u.category === currentUnitCategory);
+            
+            if (!currentUnit) {
+                throw new Error('Current unit not found');
+            }
+            
             const response = await fetch('/api/convert', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    value: parseFloat(value),
-                    from_unit: document.getElementById('selected-unit-name').textContent,
-                    to_unit: document.getElementById('targetUnit').selectedOptions[0].textContent
+                    fromUnitId: currentUnit.id,
+                    toUnitId: parseInt(targetUnitId),
+                    value: parseFloat(value)
                 })
             });
             
-            if (!response.ok) throw new Error('Conversion failed');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Conversion failed');
+            }
             
             const result = await response.json();
             resultDiv.innerHTML = `
-                <strong>${value} ${document.getElementById('selected-unit-name').textContent} = ${result.converted_value} ${result.to_unit}</strong>
+                <strong>${value} ${currentUnitName} = ${result.result} ${result.toUnit.name}</strong>
+                <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-medium);">
+                    Formula: ${result.formula}
+                </div>
             `;
             resultDiv.style.display = 'block';
             
         } catch (error) {
             console.error('Conversion error:', error);
-            alert('Conversion failed. Please try again.');
+            alert(`Conversion failed: ${error.message}`);
         }
     }
     
@@ -729,6 +757,28 @@ class UnitDecoderApp {
         
         // Clear current search query
         this.currentSearchQuery = '';
+    }
+    
+    // Reset conversion section when unit changes
+    resetConversionSection() {
+        // Clear conversion input value
+        const convertValue = document.getElementById('convertValue');
+        if (convertValue) {
+            convertValue.value = '';
+        }
+        
+        // Reset target unit selection
+        const targetUnit = document.getElementById('targetUnit');
+        if (targetUnit) {
+            targetUnit.innerHTML = '<option value="">Select target unit...</option>';
+        }
+        
+        // Hide conversion result
+        const conversionResult = document.getElementById('conversionResult');
+        if (conversionResult) {
+            conversionResult.style.display = 'none';
+            conversionResult.innerHTML = '';
+        }
     }
 
     // Utility function

@@ -138,6 +138,14 @@ module.exports = async (req, res) => {
       });
     }
     
+    // Check if units have the same base unit
+    if (fromUnit.base_unit !== toUnit.base_unit) {
+      return res.status(400).json({
+        error: 'Incompatible base units',
+        message: `Cannot convert between units with different base units: ${fromUnit.base_unit} and ${toUnit.base_unit}`
+      });
+    }
+    
     // Perform conversion
     // Step 1: Convert from source unit to base unit
     const baseValue = numValue * fromUnit.conversion_factor;
