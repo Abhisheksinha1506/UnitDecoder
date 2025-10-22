@@ -199,7 +199,7 @@ class UnitDecoderApp {
                 try { this.activeSearchController.abort(); } catch (_) {}
             }
             this.activeSearchController = new AbortController();
-            const response = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: this.activeSearchController.signal });
+            const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&_t=${Date.now()}`, { signal: this.activeSearchController.signal });
             const data = await response.json();
             
             // De-duplicate by id or name+category
@@ -286,7 +286,15 @@ class UnitDecoderApp {
     // Load total units count
     async loadTotalUnits() {
         try {
-            const response = await fetch('/api/search?q=');
+            const response = await fetch(`/api/search?q=&_t=${Date.now()}`);
+            
+            // Check if response is valid JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                console.warn('Response is not JSON, content-type:', contentType);
+                return;
+            }
+            
             const data = await response.json();
             
             const totalEl = document.getElementById('totalUnits');
@@ -295,6 +303,11 @@ class UnitDecoderApp {
             }
         } catch (error) {
             console.error('Error loading total units:', error);
+            // Set a fallback value
+            const totalEl = document.getElementById('totalUnits');
+            if (totalEl) {
+                totalEl.textContent = '100+';
+            }
         }
     }
 
