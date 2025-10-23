@@ -1,14 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔨 Running pre-commit build check..."
+echo "🔨 Running pre-commit checks..."
 
-# Run the Vercel build to ensure everything works
-npm run vercel-build
+# Run tests to ensure everything works
+npm test
 
 if [ $? -ne 0 ]; then
-  echo "❌ Build failed! Please fix the issues before committing."
+  echo "❌ Tests failed! Please fix the issues before committing."
   exit 1
 fi
 
-echo "✅ Build successful! Proceeding with commit..."
+echo "✅ All checks passed! Proceeding with commit..."
